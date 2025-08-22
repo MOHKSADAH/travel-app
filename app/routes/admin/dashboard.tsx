@@ -1,15 +1,7 @@
 import { Header, TripCard, StatsCard } from '../../../components';
+import { dashboardStats, user, allTrips } from '~/constants';
 
 const dashboard = () => {
-    const user = { name: 'Gray Doe' };
-    const dashboardStats = {
-        totalUsers: 12500,
-        usersJoined: { currentMonth: 213, lastMonth: 198 },
-        totalTrips: 3231,
-        tripsCreated: { currentMonth: 120, lastMonth: 250 },
-        userRole: { total: 40, currentMonth: 15, lastMonth: 15 },
-    };
-
     const { totalUsers, usersJoined, totalTrips, tripsCreated, userRole } = dashboardStats;
 
     return (
@@ -40,7 +32,25 @@ const dashboard = () => {
                     />
                 </div>
             </section>
-            <TripCard />
+            <section className="container">
+                <h1 className="text-xl font-semibold text-dark-100">Created Trips</h1>
+                <div className="trip-grid">
+                    {allTrips
+                        .slice(0, 4)
+                        .map(({ id, name, imageUrls, itinerary, tags, estimatedPrice }) => (
+                            <TripCard
+                                key={id}
+                                id={id.toString()}
+                                name={name}
+                                imageUrl={imageUrls[0]}
+                                location={itinerary?.[0]?.location ?? ''}
+                                tags={tags}
+                                price={estimatedPrice}
+                            />
+                        ))}
+                </div>
+            </section>
+            {/* <TripCard /> */}
         </main>
     );
 };
