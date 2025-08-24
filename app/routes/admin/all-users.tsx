@@ -1,13 +1,87 @@
+import { users } from '~/constants';
 import { Header } from '../../../components';
+import { ColumnDirective, ColumnsDirective, GridComponent } from '@syncfusion/ej2-react-grids';
+import { cn } from '~/lib/utils';
+import { getAllUsers } from '~/appwrite/auth';
+import type { Route } from './+types/all-users';
 
-const AllUsers = () => {
+export const loader = async () => {
+    const { users, total } = await getAllUsers(10, 0);
+    return { users, total };
+};
+
+const AllUsers = ({ loaderData }: Route.ComponentProps) => {
+    const { users } = loaderData;
     return (
-        <main className="dashboard wrapper">
-            <Header
-                title="Trips Page"
-                description="Manage all user trips and bookings in one place."
-            />
-            Dashboard Page Contents
+        <main className="all-users wrapper">
+            <Header title="Manage Users" description="Manage all users in one place." />
+            <GridComponent dataSource={users} gridLines="None">
+                <ColumnsDirective>
+                    <ColumnDirective
+                        field="name"
+                        headerText="Name"
+                        width="200"
+                        textAlign="Left"
+                        template={(props: UserData) => (
+                            <div className="flex items-center gap-1.5 px-4">
+                                <img
+                                    src={props.imageUrl}
+                                    alt="user"
+                                    className="rounded-full size-8 aspect-square"
+                                />
+                                <span>{props.name}</span>
+                            </div>
+                        )}
+                    />
+                    <ColumnDirective
+                        field="email"
+                        headerText="Email"
+                        width="150"
+                        textAlign="Left"
+                    />
+                    <ColumnDirective
+                        field="dateJoined"
+                        headerText="Date Joined"
+                        width="130"
+                        textAlign="Left"
+                    />
+                    <ColumnDirective
+                        field="itineraryCreated"
+                        headerText="Trip Created"
+                        width="130"
+                        textAlign="Left"
+                    />
+                    <ColumnDirective
+                        field="status"
+                        headerText="Type"
+                        width="100"
+                        textAlign="Left"
+                        template={({ status }: UserData) => (
+                            <article
+                                className={cn(
+                                    'status-column',
+                                    status === 'user' ? 'bg-success-50' : 'bg-red-200'
+                                )}
+                            >
+                                <div
+                                    className={cn(
+                                        'size-1.5 rounded-full',
+                                        status === 'user' ? 'bg-success-500' : 'bg-red-500'
+                                    )}
+                                />
+                                <h3
+                                    className={cn(
+                                        'font-inter text-xs font-medium',
+                                        status === 'user' ? 'text-success-500' : 'text-red-500'
+                                    )}
+                                >
+                                    {status}
+                                </h3>
+                            </article>
+                        )}
+                    />
+                </ColumnsDirective>
+            </GridComponent>
         </main>
     );
 };
