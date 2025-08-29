@@ -1,6 +1,13 @@
+// Syncfusion chart configuration types for axis customization
 import type { AxisModel } from '@syncfusion/ej2-react-charts';
+// Utility function for date formatting
 import { formatDate } from '~/lib/utils';
 
+/**
+ * Navigation sidebar configuration
+ * Defines the main navigation items for the admin dashboard
+ * Each item includes icon, label, and routing information
+ */
 export const sidebarItems = [
     {
         id: 1,
@@ -22,6 +29,15 @@ export const sidebarItems = [
     },
 ];
 
+/**
+ * Sample chart data for analytics visualization
+ * Represents monthly data with multiple series (y1, y2, y3) across 6 months
+ * Used in dashboard charts to demonstrate trend visualization
+ *
+ * Data Structure:
+ * - x: Month abbreviation (category axis)
+ * - y1, y2, y3: Different data series for multi-line charts
+ */
 export const chartOneData: object[] = [
     {
         x: 'Jan',
@@ -61,6 +77,11 @@ export const chartOneData: object[] = [
     },
 ];
 
+/**
+ * Travel style options for trip customization
+ * Defines different types of travel experiences users can select
+ * Used in trip creation forms and filtering
+ */
 export const travelStyles = [
     'Relaxed',
     'Luxury',
@@ -70,6 +91,11 @@ export const travelStyles = [
     'City Exploration',
 ];
 
+/**
+ * Interest categories for personalized trip recommendations
+ * Helps match users with relevant activities and destinations
+ * Used in AI trip generation algorithms
+ */
 export const interests = [
     'Food & Culinary',
     'Historical Sites',
@@ -82,12 +108,29 @@ export const interests = [
     'Local Experiences',
 ];
 
+/**
+ * Budget range options for trip planning
+ * Categorizes trips by price range to help users find suitable options
+ */
 export const budgetOptions = ['Budget', 'Mid-range', 'Luxury', 'Premium'];
 
+/**
+ * Group type options for travel planning
+ * Defines different travel party compositions for personalized recommendations
+ */
 export const groupTypes = ['Solo', 'Couple', 'Family', 'Friends', 'Business'];
 
+/**
+ * Footer link labels for the application
+ * Standard legal/policy links displayed in the footer
+ */
 export const footers = ['Terms & Condition', 'Privacy Policy'];
 
+/**
+ * Form field configuration for select/dropdown inputs
+ * Defines which fields should be rendered as dropdown components
+ * Used in dynamic form rendering and validation
+ */
 export const selectItems = [
     'groupType',
     'travelStyle',
@@ -95,6 +138,11 @@ export const selectItems = [
     'budget',
 ] as (keyof TripFormData)[];
 
+/**
+ * ComboBox data mapping for form dropdowns
+ * Maps form field names to their corresponding option arrays
+ * Provides type-safe access to dropdown options
+ */
 export const comboBoxItems = {
     groupType: groupTypes,
     travelStyle: travelStyles,
@@ -102,6 +150,12 @@ export const comboBoxItems = {
     budget: budgetOptions,
 } as Record<keyof TripFormData, string[]>;
 
+/**
+ * Syncfusion Chart Axis Configurations
+ * Pre-configured axis settings for consistent chart styling across the application
+ */
+
+// User analytics chart axes configuration
 export const userXAxis: AxisModel = { valueType: 'Category', title: 'Day' };
 export const useryAxis: AxisModel = {
     minimum: 0,
@@ -110,19 +164,25 @@ export const useryAxis: AxisModel = {
     title: 'Count',
 };
 
+// Trip analytics chart axes configuration
 export const tripXAxis: AxisModel = {
     valueType: 'Category',
     title: 'Travel Styles',
-    majorGridLines: { width: 0 },
+    majorGridLines: { width: 0 }, // Hide major grid lines for cleaner appearance
 };
 
-export const tripyAxis: AxisModel = {
+export const tripYAxis: AxisModel = {
     minimum: 0,
     maximum: 10,
     interval: 2,
     title: 'Count',
 };
 
+/**
+ * Confetti Animation Configuration
+ * Settings for celebration animations when trips are successfully created
+ * Used with canvas-confetti library for visual feedback
+ */
 export const CONFETTI_SETTINGS = {
     particleCount: 200, // Number of confetti pieces
     spread: 60, // Spread of the confetti burst
@@ -130,19 +190,30 @@ export const CONFETTI_SETTINGS = {
     decay: 0.95, // Gravity decay of the confetti
 };
 
+// Left-side confetti burst configuration
 export const LEFT_CONFETTI = {
     ...CONFETTI_SETTINGS,
-    angle: 45, // Direction of the confetti burst (90 degrees is top)
-    origin: { x: 0, y: 1 }, // Center of the screen
+    angle: 45, // Direction of the confetti burst (45 degrees from bottom-left)
+    origin: { x: 0, y: 1 }, // Bottom-left corner origin
 };
 
+// Right-side confetti burst configuration
 export const RIGHT_CONFETTI = {
     ...CONFETTI_SETTINGS,
-    angle: 135,
-    origin: { x: 1, y: 1 },
+    angle: 135, // Direction of the confetti burst (135 degrees from bottom-right)
+    origin: { x: 1, y: 1 }, // Bottom-right corner origin
 };
 
+/**
+ * Mock Data for Development and Testing
+ * These constants provide sample data for development, testing, and demo purposes
+ * In production, this data would be replaced by actual database queries
+ */
+
+// Sample user profile for testing
 export const user = { name: 'Gray Doe' };
+
+// Sample dashboard statistics with trend data
 export const dashboardStats = {
     totalUsers: 12500,
     usersJoined: { currentMonth: 213, lastMonth: 198 },
@@ -150,6 +221,8 @@ export const dashboardStats = {
     tripsCreated: { currentMonth: 120, lastMonth: 250 },
     userRole: { total: 40, currentMonth: 15, lastMonth: 15 },
 };
+
+// Sample trip data for development and demonstration
 export const allTrips = [
     {
         id: 1,
@@ -189,6 +262,7 @@ export const allTrips = [
     },
 ];
 
+// Sample user data for testing user management features
 export const users = [
     {
         id: 1,

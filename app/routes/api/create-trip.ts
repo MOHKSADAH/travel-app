@@ -1,9 +1,48 @@
+/**
+ * AI-Powered Trip Generation API Route
+ *
+ * This route leverages Google's Gemini AI to generate personalized travel itineraries
+ * based on user preferences and requirements. It also fetches relevant destination
+ * images from Unsplash and stores the complete trip data in Appwrite.
+ *
+ * Features:
+ * - AI-generated detailed itineraries with day-by-day planning
+ * - Dynamic pricing and budget breakdowns
+ * - Weather information and best times to visit
+ * - Local tips and packing essentials
+ * - Automatic image fetching for visual trip representation
+ *
+ * @module routes/api/create-trip
+ */
+
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { ID } from 'appwrite';
 import { data, type ActionFunctionArgs } from 'react-router';
 import { appwriteConfig, database } from '~/appwrite/client';
 import { parseMarkdownToJson } from '~/lib/utils';
 
+/**
+ * POST action handler for trip creation
+ *
+ * Processes user trip preferences, generates an AI-powered itinerary, fetches
+ * relevant destination images, and stores the complete trip package in the database.
+ *
+ * @param {ActionFunctionArgs} args - Route action arguments containing the request
+ * @returns {Promise<{ id: string } | { error: string }>} Created trip ID or error message
+ *
+ * Required Environment Variables:
+ * - GEMINI_API_KEY: Google Gemini AI API key
+ * - UNSPLASH_ACCESS_KEY: Unsplash API access key
+ *
+ * Request Body:
+ * - country: Destination country
+ * - numberOfDays: Trip duration
+ * - travelStyle: Preferred style of travel (e.g., luxury, budget, adventure)
+ * - interests: Array of travel interests
+ * - budget: Budget range (e.g., low, medium, high)
+ * - groupType: Type of travelers (e.g., solo, couple, family)
+ * - userId: Authenticated user's ID
+ */
 export const action = async ({ request }: ActionFunctionArgs) => {
     const { country, numberOfDays, travelStyle, interests, budget, groupType, userId } =
         await request.json();
