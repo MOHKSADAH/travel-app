@@ -53,7 +53,7 @@ const SignIn = () => {
                         <Link to="/">
                             <img src="/assets/icons/logo.svg" alt="logo" className="size-[30px]" />
                         </Link>
-                        <h1 className="p-28-bold text-dark-100">Tourvisto</h1>
+                        <h1 className="p-28-bold text-dark-100">Travelo</h1>
                     </header>
 
                     {/* Welcome message and value proposition */}
