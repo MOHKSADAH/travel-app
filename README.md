@@ -1,4 +1,7 @@
 # 🌍 AI Travel Planner
+<img width="1841" height="2302" alt="screencapture-localhost-5173-dashboard-2025-08-30-00_46_53" src="https://github.com/user-attachments/assets/0c772fd1-8225-46c0-9075-d9f22e312371" />
+<img width="1524" height="1895" alt="screencapture-localhost-5173-trips-create-2025-08-30-00_48_13" src="https://github.com/user-attachments/assets/a2613929-11fe-43d3-b5d1-9d42ab7f1629" />
+<img width="1741" height="4107" alt="screencapture-localhost-5173-trips-68b21eb500253ed84e76-2025-08-30-00_43_55" src="https://github.com/user-attachments/assets/042a332b-116d-49d1-8b18-0ffb38104b6b" />
 
 > **An intelligent travel planning platform that creates personalized itineraries using AI**
 
